@@ -58,12 +58,6 @@ public class FontBook {
       return
     }
 
-    // Log the font URL in the console
-//    let fontRef = CTFontCreateWithName(fontName as CFString, 0, nil)
-//    if let fontURL = CTFontCopyAttribute(fontRef, kCTFontURLAttribute) as? NSURL {
-//      print("saved: \(fontName): \(fontURL)")
-//    }
-
     DispatchQueue.main.async {
       if let newFont = self._font(named: fontName) {
         let familyName = CTFontCopyFamilyName(newFont) as String
