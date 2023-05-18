@@ -1,8 +1,23 @@
 import UIKit
 import FontBook
 
-class FontListViewController: ViewController {
-  let fontBook = FontBook()
+class FontListViewController: ListViewController, UITableViewDataSource, UITableViewDelegate  {
+  private static let cellId = "kFontListViewCellId"
+  
+  let fontBook: FontBook
+  private var downloadedFontFamilyNames: [String]
+  private let systemFontFamilyNames: [String]
+  
+  init(fontBook: FontBook) {
+    self.fontBook = fontBook
+    self.systemFontFamilyNames = fontBook.installedFamilyNames
+    self.downloadedFontFamilyNames = []
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError()
+  }
   
   override func setUp() {
     super.setUp()
@@ -21,14 +36,11 @@ class FontListViewController: ViewController {
   }
   
   @objc func onAddFont() {
-    showAlert(title: "Enter font name") { alert in
-      alert.addTextField()
-      alert.addAction(UIAlertAction(title: "Download", style: .default, handler: { action in
-        if let fontName = alert.textFields?.first?.text {
-          self.addFont(named: fontName)
-        }
-      }))
-    }
+    let fontInstallListVwCtrl = FontInstallerViewController(fontBook: fontBook)
+    fontInstallListVwCtrl.delegate = self
+    let navCtrl = UINavigationController(rootViewController: fontInstallListVwCtrl)
+    present(navCtrl, animated: true)
+    
   }
   
   @objc func onAbout() {
@@ -38,39 +50,11 @@ class FontListViewController: ViewController {
     )
   }
   
-  private func showHelp(title: String, message: String) {
-    let urlStr = "https://developer.apple.com/fonts/system-fonts/"
-    showAlert(
-      title: title,
-      message: "\(message)\n\nTo see all possible values use the Font Book.app on Mac or visit this link \(urlStr)"
-    ) { alert in
-      alert.addAction(UIAlertAction(title: "Visit link", style: .default, handler: { _ in
-        if let url = URL(string: urlStr) {
-          UIApplication.shared.open(url)
-        }
-      }))
-    }
-  }
-  
-  private func addFont(named fontName: String) {
-    fontBook.downloadFont(named: fontName) { isSaved in
-      if isSaved {
-        self.tableVw.reloadData()
-      } else {
-        self.showHelp(
-          title: "\(fontName) not found!",
-          message: "Note font display name is not always the font name.\n\nFor example, 'Al Bayan' is 'AlBayan'"
-        )
-      }
-    }
-  }
-  
   private var allfontFamilyNames: [[String]] {
-    return [fontBook.downloadedFontFamilyNames, fontBook.systemFontFamilyNames]
+    return [downloadedFontFamilyNames, systemFontFamilyNames]
   }
-}
 
-extension FontListViewController: UITableViewDataSource {
+  // MARK: - UITableViewDataSource -
   func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }
@@ -81,10 +65,10 @@ extension FontListViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: UITableViewCell
-    if let cachedCell = tableView.dequeueReusableCell(withIdentifier: "kCellId") {
+    if let cachedCell = tableView.dequeueReusableCell(withIdentifier: Self.cellId) {
       cell = cachedCell
     } else {
-      cell = UITableViewCell(style: .subtitle, reuseIdentifier: "kCellId")
+      cell = UITableViewCell(style: .subtitle, reuseIdentifier: Self.cellId)
     }
 
     let fontFamilyName = allfontFamilyNames[indexPath.section][indexPath.row]
@@ -98,9 +82,8 @@ extension FontListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return ["Downloaded Fonts", "System Fonts"][section]
   }
-}
 
-extension FontListViewController: UITableViewDelegate {
+  // MARK: - UITableViewDelegate -
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let fontFamilyName = allfontFamilyNames[indexPath.section][indexPath.row]
     let detailVwCtrl = FontDetailViewController(fontFamilyName: fontFamilyName, fontBook: fontBook)
@@ -109,3 +92,12 @@ extension FontListViewController: UITableViewDelegate {
   }
 }
 
+extension FontListViewController: FontInstallerViewControllerDelegate {
+  func fontInstallerViewController(
+    vwCtrl: FontInstallerViewController,
+    didInstallFontNamed fontName: String, family: String) {
+      downloadedFontFamilyNames.append(family)
+      tableVw.reloadData()
+      vwCtrl.dismiss(animated: true)
+  }
+}

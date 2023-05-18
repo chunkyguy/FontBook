@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ListViewController: UIViewController {
   
   private var isSetUp = false
   lazy var tableVw = UITableView(frame: view.bounds, style: .grouped)
@@ -33,5 +33,19 @@ class ViewController: UIViewController {
     configure?(alert)
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     present(alert, animated: true)
+  }
+  
+  func showHelp(title: String, message: String) {
+    let urlStr = "https://developer.apple.com/fonts/system-fonts/"
+    showAlert(
+      title: title,
+      message: "\(message)\n\nTo see all possible values use the Font Book.app on Mac or visit this link \(urlStr)"
+    ) { alert in
+      alert.addAction(UIAlertAction(title: "Visit link", style: .default, handler: { _ in
+        if let url = URL(string: urlStr) {
+          UIApplication.shared.open(url)
+        }
+      }))
+    }
   }
 }

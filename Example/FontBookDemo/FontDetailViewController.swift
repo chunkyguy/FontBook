@@ -1,8 +1,10 @@
 import UIKit
 import FontBook
 
-class FontDetailViewController: ViewController {
+class FontDetailViewController: ListViewController, UITableViewDataSource, UITableViewDelegate  {
+  private static let cellId = "kFontDetailViewCellId"
   private static let sampleTextKey = "kSampleText"
+
   private let fontFamilyName: String
   private let fontBook: FontBook
   private let fontNames: [String]
@@ -48,9 +50,8 @@ class FontDetailViewController: ViewController {
       }))
     }
   }
-}
-
-extension FontDetailViewController: UITableViewDataSource {
+  
+  // MARK: - UITableViewDataSource -
   func numberOfSections(in tableView: UITableView) -> Int {
     return fontNames.count
   }
@@ -65,10 +66,10 @@ extension FontDetailViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: UITableViewCell
-    if let cachedCell = tableView.dequeueReusableCell(withIdentifier: "kDetailCellId") {
+    if let cachedCell = tableView.dequeueReusableCell(withIdentifier: Self.cellId) {
       cell = cachedCell
     } else {
-      cell = UITableViewCell(style: .default, reuseIdentifier: "kDetailCellId")
+      cell = UITableViewCell(style: .default, reuseIdentifier: Self.cellId)
     }
 
     cell.textLabel?.text = "Error loading!"
@@ -86,9 +87,8 @@ extension FontDetailViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 128
   }
-}
 
-extension FontDetailViewController: UITableViewDelegate {
+  // MARK: - UITableViewDelegate -
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
   }

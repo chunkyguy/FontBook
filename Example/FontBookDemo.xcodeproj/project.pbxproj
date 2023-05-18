@@ -9,27 +9,27 @@
 /* Begin PBXBuildFile section */
 		E67FE77F2A113694001385F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FE77E2A113694001385F3 /* AppDelegate.swift */; };
 		E67FE7812A113694001385F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FE7802A113694001385F3 /* SceneDelegate.swift */; };
-		E67FE7832A113694001385F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FE7822A113694001385F3 /* ViewController.swift */; };
-		E67FE7862A113694001385F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67FE7842A113694001385F3 /* Main.storyboard */; };
+		E67FE7832A113694001385F3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FE7822A113694001385F3 /* ListViewController.swift */; };
 		E67FE7882A113695001385F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E67FE7872A113695001385F3 /* Assets.xcassets */; };
 		E67FE78B2A113695001385F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67FE7892A113695001385F3 /* LaunchScreen.storyboard */; };
 		E67FE7952A125B3D001385F3 /* FontDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FE7942A125B3D001385F3 /* FontDetailViewController.swift */; };
 		E67FE7972A1267F8001385F3 /* FontListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FE7962A1267F8001385F3 /* FontListViewController.swift */; };
 		E67FE79C2A12713A001385F3 /* FontBook in Frameworks */ = {isa = PBXBuildFile; productRef = E67FE79B2A12713A001385F3 /* FontBook */; };
+		E67FE7A32A159553001385F3 /* FontInstallerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FE7A22A159553001385F3 /* FontInstallerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E67FE77B2A113694001385F3 /* FontBookDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FontBookDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E67FE77E2A113694001385F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E67FE7802A113694001385F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E67FE7822A113694001385F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E67FE7852A113694001385F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E67FE7822A113694001385F3 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		E67FE7872A113695001385F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E67FE78A2A113695001385F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E67FE78C2A113695001385F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E67FE7942A125B3D001385F3 /* FontDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDetailViewController.swift; sourceTree = "<group>"; };
 		E67FE7962A1267F8001385F3 /* FontListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListViewController.swift; sourceTree = "<group>"; };
 		E67FE7992A12706F001385F3 /* FontBook */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FontBook; path = ..; sourceTree = "<group>"; };
+		E67FE7A22A159553001385F3 /* FontInstallerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontInstallerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,13 +67,13 @@
 			children = (
 				E67FE77E2A113694001385F3 /* AppDelegate.swift */,
 				E67FE7802A113694001385F3 /* SceneDelegate.swift */,
-				E67FE7822A113694001385F3 /* ViewController.swift */,
+				E67FE7822A113694001385F3 /* ListViewController.swift */,
 				E67FE7962A1267F8001385F3 /* FontListViewController.swift */,
 				E67FE7942A125B3D001385F3 /* FontDetailViewController.swift */,
-				E67FE7842A113694001385F3 /* Main.storyboard */,
+				E67FE7A22A159553001385F3 /* FontInstallerViewController.swift */,
 				E67FE7872A113695001385F3 /* Assets.xcassets */,
-				E67FE7892A113695001385F3 /* LaunchScreen.storyboard */,
 				E67FE78C2A113695001385F3 /* Info.plist */,
+				E67FE7892A113695001385F3 /* LaunchScreen.storyboard */,
 			);
 			path = FontBookDemo;
 			sourceTree = "<group>";
@@ -156,7 +156,6 @@
 			files = (
 				E67FE78B2A113695001385F3 /* LaunchScreen.storyboard in Resources */,
 				E67FE7882A113695001385F3 /* Assets.xcassets in Resources */,
-				E67FE7862A113694001385F3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,8 +168,9 @@
 			files = (
 				E67FE7952A125B3D001385F3 /* FontDetailViewController.swift in Sources */,
 				E67FE7972A1267F8001385F3 /* FontListViewController.swift in Sources */,
-				E67FE7832A113694001385F3 /* ViewController.swift in Sources */,
+				E67FE7832A113694001385F3 /* ListViewController.swift in Sources */,
 				E67FE77F2A113694001385F3 /* AppDelegate.swift in Sources */,
+				E67FE7A32A159553001385F3 /* FontInstallerViewController.swift in Sources */,
 				E67FE7812A113694001385F3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,14 +178,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E67FE7842A113694001385F3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E67FE7852A113694001385F3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E67FE7892A113695001385F3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -323,7 +315,6 @@
 				INFOPLIST_FILE = FontBookDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -351,7 +342,6 @@
 				INFOPLIST_FILE = FontBookDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
