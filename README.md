@@ -4,8 +4,9 @@ View and download fonts
 
 ### Screenshots
 
-![Home default](/Screenshots/01.png)
-![Enter font name](/Screenshots/02.png)
-![Home updated](/Screenshots/03.png)
-![Detail](/Screenshots/04.png)
-![About](/Screenshots/05.png)
+![Home default](/Screenshots/home.png)
+![View font list](/Screenshots/list.png)
+![Enter font name](/Screenshots/keyboard.png)
+![Home updated](/Screenshots/home2.png)
+![Detail](/Screenshots/details.png)
+![About](/Screenshots/about.png)
