@@ -77,7 +77,11 @@ struct FontList {
       var infoList: [FontInfo] = []
       for font in list.fonts {
         for typeface in font.typefaces {
-          if let name = typeface.name, let family = typeface.family {
+          if
+            let name = typeface.name,
+            let family = typeface.family,
+            name.first != ".", family.first != "."
+          {
             let info = FontInfo(name: name, family: family, isInstalled: false)
             infoList.append(info)
           }

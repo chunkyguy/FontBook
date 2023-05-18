@@ -49,12 +49,10 @@ extension FontBook {
   
   public func font(named fontName: String, size: CGFloat = 12, completion: @escaping (FontResponse) -> Void) {
     if let font = font(named: fontName, size: size) {
-      print("FontBook::font: found \(fontName)")
       completion(FontResponse(request: fontName, font: font, isMatching: true))
       return
     }
     
-    print("FontBook::font: fetching \(fontName) ...")
     store.findFont(named: fontName) { response in
       completion(self.fontResponseWithInfo(response: response, size: size))
     }
@@ -62,15 +60,12 @@ extension FontBook {
 
   private func fontResponseWithInfo(response: FontInfoResponse, size: CGFloat) -> FontResponse {
     guard let font = UIFont(name: response.request, size: size) else {
-      print("FontBook::fontResponseWithInfo: \(response.request) => Missing")
       return FontResponse(
         request: response.request,
         font: UIFont.systemFont(ofSize: size),
         isMatching: false
       )
     }
-    
-    print("FontBook::fontResponseWithInfo: \(response.request) => \(font.fontName) \(font.familyName)")
     return FontResponse(request: response.request, font: font, isMatching: response.isMatching)
   }
 

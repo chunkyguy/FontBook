@@ -57,8 +57,6 @@ class FontInstallerViewController: ListViewController, UITableViewDataSource, UI
   }
   
   private func handleResponse(_ response: FontResponse) {
-    print("handleResponse: \(response.request) => \(response.font.fontName) \(response.font.familyName) | \(response.isMatching)")
-    
     guard response.isMatching else {
       showHelp(
         title: "\(response.request) not found!",
